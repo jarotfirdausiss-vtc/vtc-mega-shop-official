@@ -2,38 +2,96 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VTC MEGA SHOP RESMI - Muara Banten</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VTC MEGA SHOP - Shopee Version</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:linear-gradient(135deg,#FF0033,#FF9900);min-height:100vh;padding:15px}
-.card{max-width:420px;margin:0 auto;background:#fff;border-radius:24px;padding:28px;box-shadow:0 15px 40px rgba(0,0,0,.4);text-align:center}
-.logo{font-size:56px}
-h1{color:#FF0033;margin:10px 0 5px;font-size:26px}
-.badge{background:#25D366;color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:bold;display:inline-block;margin-bottom:10px}
-.btn{display:block;padding:18px;border-radius:14px;text-decoration:none;font-weight:900;font-size:17px;margin:12px 0;color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-.btn-merah{background:#FF0033}
-.btn-hitam{background:#111}
-.btn-wa{background:#25D366}
-p{color:#555;font-size:14px;line-height:1.5}
-.small{color:#888;font-size:11px;margin-top:20px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,system-ui}
+body{background:#f5f5f5}
+.header{background:linear-gradient(180deg,#ff6a00 0%,#ee4d2d 100%);padding:10px 12px;position:sticky;top:0;z-index:99;color:#fff}
+.top{display:flex;align-items:center;gap:8px}
+.logo{font-weight:900;font-size:18px;flex:1}
+.search-box{background:#fff;border-radius:4px;display:flex;align-items:center;padding:8px 10px;color:#999;flex:1;margin-top:8px}
+.search-box input{border:none;outline:none;width:100%;font-size:14px}
+.banner{background:linear-gradient(90deg,#ff6a00,#ffae00);margin:10px;border-radius:8px;padding:16px;color:#fff;display:flex;justify-content:space-between}
+.cat{display:flex;gap:0;overflow:auto;background:#fff;padding:8px 0}
+.cat div{flex:1;min-width:70px;text-align:center;font-size:11px;padding:6px}
+.cat b{font-size:22px;display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px}
+.card{background:#fff;border-radius:4px;overflow:hidden;position:relative}
+.card-info{padding:6px}
+.card-name{font-size:12px;height:32px;overflow:hidden;line-height:1.3}
+.card-price{color:#ee4d2d;font-weight:700;font-size:14px;margin-top:4px}
+.badge{position:absolute;top:6px;left:6px;background:#ee4d2d;color:#fff;font-size:9px;padding:2px 4px;border-radius:2px;font-weight:700}
+.btn-add{width:100%;background:#fff0e5;border:1px solid #ee4d2d;color:#ee4d2d;padding:6px;font-size:11px;font-weight:700;border-radius:4px;margin-top:6px}
+.cart-bar{position:fixed;bottom:50px;left:10px;right:10px;background:#fff;border-radius:8px;padding:10px;display:none;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:100}
+.cart-bar.show{display:flex;justify-content:space-between;align-items:center}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;border-top:1px solid #eee;z-index:99}
+.bottom div{flex:1;text-align:center;padding:8px 0;font-size:10px;color:#999}
+.bottom .active{color:#ee4d2d}
+.cart-page{position:fixed;top:0;left:0;right:0;bottom:0;background:#f5f5f5;z-index:200;display:none;overflow:auto;padding-bottom:100px}
+.cart-page.show{display:block}
+.cart-item{display:flex;gap:8px;padding:10px;background:#fff;margin-bottom:8px;align-items:center}
+.checkout-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #eee}
+.btn-checkout{background:#ee4d2d;color:#fff;border:none;padding:12px 20px;border-radius:4px;font-weight:800;flex:1;margin-left:10px}
 </style>
 </head>
 <body>
-<div class="card">
-<div class="logo">🛒</div>
-<span class="badge">✅ TOKO RESMI AKTIF</span>
-<h1>VTC MEGA SHOP</h1>
-<p><b>Resmi - Muara, Banten</b><br>Pusat Download APK Aman & Terpercaya</p>
-
-<a class="btn btn-merah" href="#">📥 DOWNLOAD APK RESMI</a>
-<a class="btn btn-wa" href="https://wa.me/6283878502333?text=Halo%20Kak%20VTC%20Mega%20Shop%2C%20saya%20mau%20tanya%20produk">💬 CHAT WHATSAPP ADMIN</a>
-<a class="btn btn-hitam" href="https://wa.me/6283878502333?text=Halo%20mau%20lihat%20katalog">📦 LIHAT KATALOG WA</a>
-
-<hr style="margin:20px 0;border:0;border-top:1px solid #eee">
-<p style="font-size:13px"><b>Link Toko Umum Tanpa Login:</b><br>jarotfirdausiss-vtc.github.io/vtc-mega-shop-official/</p>
-<p style="font-size:13px;margin-top:10px">📍 Muara, Banten<br>📞 083878502333</p>
-<p class="small">© 2026 VTC MEGA SHOP RESMI<br>100% Original - Amanah - Terpercaya</p>
+<div class="header">
+<div class="top"><span class="logo">🛒 VTC MEGA SHOP</span><span>🛒<b id="cartCount" style="background:#fff;color:#ee4d2d;border-radius:10px;padding:0 5px;font-size:12px">0</b></span></div>
+<div class="search-box">🔍 Cari di VTC MEGA - Gratis Ongkir COD</div>
 </div>
+<div class="banner"><div><b style="font-size:18px">GRATIS ONGKIR SE-INDONESIA 🇮🇩</b><br><small>Sabang-Merauke - COD Bayar di Tempat</small></div><div style="font-size:35px">🚚</div></div>
+<div class="cat"><div><b>📱</b>Pulsa</div><div><b>🛒</b>Sembako</div><div><b>👕</b>Fashion</div><div><b>🔌</b>Elektronik</div><div><b>📺</b>Live</div></div>
+<div style="background:#fff;padding:8px 12px;display:flex;justify-content:space-between;margin-top:8px"><b style="font-size:13px;color:#ee4d2d">FLASH SALE ⚡</b><small>Berakhir 02:15:30</small></div>
+<div class="grid" id="productGrid"></div>
+<div class="cart-bar" id="cartBar"><div><b id="cartInfo">0 produk</b> <span id="cartTotal" style="color:#ee4d2d;font-weight:800">Rp0</span></div><button onclick="openCart()" style="background:#ee4d2d;color:#fff;border:none;padding:8px 12px;border-radius:4px;font-weight:700">Keranjang</button></div>
+<div class="cart-page" id="cartPage">
+<div style="background:#ee4d2d;color:#fff;padding:12px;display:flex;align-items:center;gap:10px"><span onclick="closeCart()" style="font-size:20px">←</span><b>Keranjang ( <span id="cartCount2">0</span> )</b></div>
+<div id="cartList"></div>
+<div class="checkout-bar"><div><small>Total</small><br><b id="cartTotal2" style="color:#ee4d2d">Rp0</b></div><button class="btn-checkout" onclick="checkoutWA()">Checkout COD</button></div>
+</div>
+<div class="bottom"><div class="active">🏠<br>Home</div><div>📺<br>Live</div><div onclick="openCart()">🛒<br>Cart</div><div>💬<br>Chat</div><div>👤<br>Saya</div></div>
+<script>
+const products=[
+{id:1,name:"Kopi Premium 200g Arabika",price:27000,old:55000,disc:"-50%",img:"☕"},
+{id:2,name:"Beras Premium 5kg Pulen",price:62000,old:69000,disc:"-10%",img:"🍚"},
+{id:3,name:"Minyak Goreng 1L",price:18500,old:24000,disc:"-22%",img:"🫒"},
+{id:4,name:"Mie Goreng 10pcs",price:15000,old:18000,disc:"-16%",img:"🍜"},
+{id:5,name:"Kaos Hitam Premium",price:45000,old:65000,disc:"-30%",img:"👕"},
+{id:6,name:"Headset Bluetooth",price:89000,old:115000,disc:"-22%",img:"🎧"},
+{id:7,name:"Air Mineral 12 Botol",price:10000,old:15000,disc:"-33%",img:"💧"},
+{id:8,name:"Keripik Balado 100g",price:12000,old:14000,disc:"-14%",img:"🍿"},
+];
+let cart=[];
+function render(){
+let h="";products.forEach(p=>{
+h+=`<div class="card" onclick="addToCart(${p.id})"><span class="badge">${p.disc}</span><div style="height:130px;background:#fff8f0;display:flex;align-items:center;justify-content:center;font-size:50px">${p.img}</div><div class="card-info"><div class="card-name">${p.name}</div><div class="card-price">Rp${p.price.toLocaleString('id-ID')}</div><button class="btn-add">+ Keranjang</button></div></div>`;
+});document.getElementById("productGrid").innerHTML=h;
+}
+function addToCart(id){
+let p=products.find(x=>x.id===id);let c=cart.find(x=>x.id===id);if(c)c.qty++;else cart.push({...p,qty:1});updateCart();
+}
+function updateCart(){
+let count=cart.reduce((a,b)=>a+b.qty,0);let total=cart.reduce((a,b)=>a+b.price*b.qty,0);
+document.getElementById("cartCount").innerText=count;document.getElementById("cartCount2").innerText=count;
+document.getElementById("cartInfo").innerText=count+" produk";document.getElementById("cartTotal").innerText="Rp"+total.toLocaleString('id-ID');document.getElementById("cartTotal2").innerText="Rp"+total.toLocaleString('id-ID');
+document.getElementById("cartBar").classList.toggle("show",count>0);
+let list="";cart.forEach(item=>{
+list+=`<div class="cart-item"><div style="font-size:30px">${item.img}</div><div style="flex:1"><div style="font-size:12px">${item.name}</div><div style="color:#ee4d2d;font-weight:700">Rp${item.price.toLocaleString('id-ID')}</div></div><div><button onclick="changeQty(${item.id},-1)">-</button> ${item.qty} <button onclick="changeQty(${item.id},1)">+</button></div></div>`;
+});document.getElementById("cartList").innerHTML=list||"<div style='padding:20px;text-align:center;color:#999'>Keranjang kosong</div>";
+}
+function changeQty(id,d){let c=cart.find(x=>x.id===id);if(c){c.qty+=d;if(c.qty<=0)cart=cart.filter(x=>x.id!==id);updateCart();}}
+function openCart(){document.getElementById("cartPage").classList.add("show")}
+function closeCart(){document.getElementById("cartPage").classList.remove("show")}
+function checkoutWA(){
+if(cart.length==0){alert("Keranjang kosong");return;}
+let total=cart.reduce((a,b)=>a+b.price*b.qty,0);
+let pesan="Halo VTC MEGA SHOP %0A Mau Order COD:%0A";
+cart.forEach(i=>{pesan+=`%0A- ${i.name} x${i.qty} = Rp${(i.price*i.qty).toLocaleString('id-ID')}`});
+pesan+=`%0ATotal: Rp${total.toLocaleString('id-ID')}%0ACOD Bayar di Tempat`;
+window.open("https://wa.me/6283878502333?text="+pesan,"_blank");
+}
+render();
+</script>
 </body>
 </html>
