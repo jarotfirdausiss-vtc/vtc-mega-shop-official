@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "VTC MEGA SHOP RESMI",
+    "slug": "vtc-mega-shop-resmi",
+    "version": "1.0.0",
+    "android": {
+      "package": "com.vtc.megashop.resmi"
+    }
+  }
+}
