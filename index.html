@@ -2,48 +2,33 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shopee - Belanja Online</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Shopee</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>
-body{font-family:Roboto,Helvetica,Arial,sans-serif;background:#f5f5f5;-webkit-tap-highlight-color:transparent}
-.icon-box:active{transform:scale(0.92)}
-#toast{transform:translateY(100px);transition:0.3s}
-#toast.show{transform:translateY(0)}
-</style>
+<style>body{font-family:Roboto,sans-serif;background:#f5f5f5} .no-img img{display:none!important}</style>
 </head>
-<body class="pb-[65px]">
-
-<header class="bg-[#ee4d2d] sticky top-0 z-50 px-3 py-2.5">
-<div class="flex justify-between items-center text-white">
-<div class="flex items-center gap-2"><span class="text-[24px] font-bold">S</span><b class="text-[18px] tracking-tight">Shopee</b></div>
-<div class="flex gap-4 text-[20px]"><span onclick="showToast('Chat')">💬</span><span onclick="showToast('Notifikasi')">🔔</span><span onclick="openCart()">🛒<span id="cartCount" class="bg-white text-[#ee4d2d] text-[10px] px-1 rounded-full ml-1 font-bold">0</span></span></div>
-</div>
-<div class="mt-3 bg-white rounded flex items-center px-3 py-[11px] gap-2 shadow-sm">
-<span>🔍</span><input id="searchInput" oninput="filterProduk(this.value)" class="flex-1 text-[13px] outline-none" placeholder="Cari di Shopee"><span onclick="showToast('Scan kamera')">📷</span>
-</div>
+<body class="pb-[65px] no-img">
+<header class="bg-[#ee4d2d] sticky top-0 z-50 px-3 py-3">
+<div class="flex justify-between text-white font-bold"><span class="text-[20px]">Shopee</span><span class="text-[20px] flex gap-4">💬 🔔 🛒</span></div>
+<div class="mt-3 bg-white rounded flex items-center px-3 py-3 gap-2"><span>🔍</span><input id="s" oninput="filter(this.value)" class="flex-1 text-[13px] outline-none" placeholder="Cari di Shopee - Baju Celana Umami"><span>📷</span></div>
 </header>
-
-<div class="bg-white px-2 py-3.5">
-<div class="grid grid-cols-4 gap-y-5">
-<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Mall')"><div class="w-[46px] h-[46px] bg-[#fff5f0] rounded-xl flex items-center justify-center text-[26px]">🏬</div><span class="text-[11px] mt-1">Shopee Mall</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Pulsa & Tagihan')"><div class="w-[46px] h-[46px] bg-[#f0f7ff] rounded-xl flex items-center justify-center text-[26px]">📱</div><span class="text-[11px]">Pulsa, Tagihan</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Food')"><div class="w-[46px] h-[46px] bg-[#fff8e6] rounded-xl flex items-center justify-center text-[26px]">🍔</div><span class="text-[11px]">Shopee Food</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Gratis Ongkir')"><div class="w-[46px] h-[46px] bg-[#e6f9ed] rounded-xl flex items-center justify-center text-[26px]">🚚</div><span class="text-[11px]">Gratis Ongkir</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Voucher')"><div class="w-[46px] h-[46px] bg-[#fef0e6] rounded-xl flex items-center justify-center text-[26px]">🎟️</div><span class="text-[11px]">Voucher</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Flash Sale')"><div class="w-[46px] h-[46px] bg-[#fff0f0] rounded-xl flex items-center justify-center text-[26px]">⚡</div><span class="text-[11px]">Flash Sale</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Live')"><div class="w-[46px] h-[46px] bg-[#ffe6e6] rounded-xl flex items-center justify-center text-[26px]">🔴</div><span class="text-[11px]">Shopee Live</span></div>
-<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Video')"><div class="w-[46px] h-[46px] bg-[#e6e6ff] rounded-xl flex items-center justify-center text-[26px]">🎬</div><span class="text-[11px]">Shopee Video</span></div>
-</div>
+<div class="bg-white p-3 grid grid-cols-4 gap-4 text-center">
+<div onclick="toast('Shopee Mall')"><div class="bg-orange-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🏬</div><p class="text-[11px]">Mall</p></div>
+<div onclick="toast('Pulsa')"><div class="bg-blue-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">📱</div><p class="text-[11px]">Pulsa</p></div>
+<div onclick="toast('Food')"><div class="bg-yellow-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🍔</div><p class="text-[11px]">Food</p></div>
+<div onclick="toast('Gratis Ongkir')"><div class="bg-green-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🚚</div><p class="text-[11px]">Gratis Ongkir</p></div>
+<div onclick="toast('Voucher')"><div class="bg-orange-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🎟️</div><p class="text-[11px]">Voucher</p></div>
+<div onclick="toast('Flash Sale')"><div class="bg-red-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">⚡</div><p class="text-[11px]">Flash Sale</p></div>
+<div onclick="toast('Live')"><div class="bg-red-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🔴</div><p class="text-[11px]">Live</p></div>
+<div onclick="toast('Video')"><div class="bg-purple-50 rounded-xl h-[48px] flex items-center justify-center text-[28px]">🎬</div><p class="text-[11px]">Video</p></div>
 </div>
 
 <div class="bg-white mt-2">
-<div class="px-3 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><span class="font-black italic text-[#ee4d2d] text-[16px]">FLASH SALE</span><div class="flex gap-1"><span class="bg-black text-white text-[11px] px-1 rounded">02</span>:<span class="bg-black text-white text-[11px] px-1 rounded">15</span>:<span class="bg-black text-white text-[11px] px-1 rounded">33</span></div></div><span class="text-[12px]" onclick="showToast('Lihat semua flash sale')">Lihat Semua ›</span></div>
-<div id="infoSearch" class="px-3 text-[11px] text-gray-500 pb-2"></div>
-<div id="productGrid" class="grid grid-cols-2 gap-[1px] bg-[#e5e5e5]">
+<div class="p-3 flex justify-between"><b class="text-[#ee4d2d] italic">FLASH SALE 02:15:33</b><span class="text-[12px]">Lihat Semua ›</span></div>
+<div id="grid" class="grid grid-cols-2 gap-px bg-gray-200">
 
-<div class="prod bg-white p-2.5" data-name="baju celana kaos premium semua ada" onclick="openDetail('Baju Celana Kaos Premium','Rp45.000','Terjual 2,3RB+','👕')"><div class="h-[150px] bg-[#f8f8f8] flex items-center justify-center text-[64px]">👕</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">Baju Celana Kaos Premium - Semua Ada</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp45.000</span><span class="text-[10px] text-gray-400 line-through">Rp90.000</span></div><p class="text-[10px] text-gray-500 mt-1">⭐4.9 | Terjual 2,3RB+</p></div>
+<div class="item bg-white p-3" data-k="baju celana kaos" onclick="beli('Baju Celana Kaos Premium','45000')"><div class="h-[140px] bg-gray-50 flex items-center justify-center text-[60px] rounded">👕</div><p class="text-[12px] mt-2">Baju Celana Kaos Premium - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp45.000</p><p class="text-[10px] text-gray-400">⭐4.9 Terjual 2RB+</p></div>
 
-<div class="prod bg-white p-2.5" data-name="vtc blok bumbu umami ayam sapi jamur semua rasa" onclick="openDetail('VTC Blok Bumbu Umami All Rasa','Rp12.500','Terjual 5,2RB+','🍗')"><div class="h-[150px] bg-[#fff8e6] flex items-center justify-center text-[64px]">🍗</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">VTC Blok Bumbu Umami Ayam Sapi Jamur</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp12.500</span></div><p class="text-[10px] text-gray-500 mt-1">⭐4.9 | Terjual 5,2RB+</p></div>
+<div class="item bg-white p-3" data-k="vtc blok bumbu umami ayam sapi" onclick="beli('VTC Blok Bumbu Umami All Rasa','12500')"><div class="h-[140px] bg-yellow-50 flex items-center justify-center text-[60px] rounded">🍗</div><p class="text-[12px] mt-2">VTC Blok Bumbu Umami All Rasa</p><p class="text-[#ee4d2d] font-bold">Rp12.500</p><p class="text-[10px] text-gray-400">⭐4.9 Terjual 5RB+</p></div>
 
-<div class="prod bg-white p-2.5" data-name="sepatu sneakers nike adidas semua ada" onclick="openDetail('Sepatu Sneakers Premium','Rp199.000','Terjual 1,5RB+','👟')"><div class="h-[150px] bg-[#f3f0ff] flex items-center justify-center text-[64px]">👟</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">Sepatu Sneakers Premium - Semua Ada</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp199.000</span></div><p class="text-
+<div class="item bg-white p-3" data-k="sepatu sneakers" onclick="beli('Sepatu Sneakers','
