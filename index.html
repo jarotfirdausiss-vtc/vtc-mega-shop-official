@@ -3,45 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Shopee</title>
+<title>Shopee - Belanja Online</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<style>body{font-family:Roboto,sans-serif;background:#f5f5f5}</style>
+<style>
+body{font-family:Roboto,Helvetica,Arial,sans-serif;background:#f5f5f5;-webkit-tap-highlight-color:transparent}
+.icon-box:active{transform:scale(0.92)}
+#toast{transform:translateY(100px);transition:0.3s}
+#toast.show{transform:translateY(0)}
+</style>
 </head>
-<body class="pb-[60px]">
+<body class="pb-[65px]">
+
 <header class="bg-[#ee4d2d] sticky top-0 z-50 px-3 py-2.5">
-<div class="flex justify-between items-center text-white"><b class="text-[19px]">Shopee</b><div class="flex gap-4 text-[18px]"><span>💬</span><span>🔔</span><span>🛒</span></div></div>
-<div class="mt-2.5 bg-white rounded flex items-center px-3 py-2.5 gap-2"><span>🔍</span><input id="search" oninput="filter(this.value)" class="flex-1 text-[13px] outline-none" placeholder="Cari di Shopee"><span>📷</span></div>
+<div class="flex justify-between items-center text-white">
+<div class="flex items-center gap-2"><span class="text-[24px] font-bold">S</span><b class="text-[18px] tracking-tight">Shopee</b></div>
+<div class="flex gap-4 text-[20px]"><span onclick="showToast('Chat')">💬</span><span onclick="showToast('Notifikasi')">🔔</span><span onclick="openCart()">🛒<span id="cartCount" class="bg-white text-[#ee4d2d] text-[10px] px-1 rounded-full ml-1 font-bold">0</span></span></div>
+</div>
+<div class="mt-3 bg-white rounded flex items-center px-3 py-[11px] gap-2 shadow-sm">
+<span>🔍</span><input id="searchInput" oninput="filterProduk(this.value)" class="flex-1 text-[13px] outline-none" placeholder="Cari di Shopee"><span onclick="showToast('Scan kamera')">📷</span>
+</div>
 </header>
-<div class="bg-white p-3">
-<div class="grid grid-cols-4 gap-4 text-center">
-<div><img src="https://img.icons8.com/color/48/shop.png" class="w-10 mx-auto"><p class="text-[11px]">Mall</p></div>
-<div><img src="https://img.icons8.com/color/48/recharge.png" class="w-10 mx-auto"><p class="text-[11px]">Pulsa</p></div>
-<div><img src="https://img.icons8.com/color/48/food.png" class="w-10 mx-auto"><p class="text-[11px]">Food</p></div>
-<div><img src="https://img.icons8.com/color/48/delivery.png" class="w-10 mx-auto"><p class="text-[11px]">Gratis Ongkir</p></div>
-<div><img src="https://img.icons8.com/color/48/ticket.png" class="w-10 mx-auto"><p class="text-[11px]">Voucher</p></div>
-<div><img src="https://img.icons8.com/color/48/flash-on.png" class="w-10 mx-auto"><p class="text-[11px]">Flash Sale</p></div>
-<div><img src="https://img.icons8.com/color/48/youtube-live.png" class="w-10 mx-auto"><p class="text-[11px]">Live</p></div>
-<div><img src="https://img.icons8.com/color/48/video.png" class="w-10 mx-auto"><p class="text-[11px]">Video</p></div>
+
+<div class="bg-white px-2 py-3.5">
+<div class="grid grid-cols-4 gap-y-5">
+<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Mall')"><div class="w-[46px] h-[46px] bg-[#fff5f0] rounded-xl flex items-center justify-center text-[26px]">🏬</div><span class="text-[11px] mt-1">Shopee Mall</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Pulsa & Tagihan')"><div class="w-[46px] h-[46px] bg-[#f0f7ff] rounded-xl flex items-center justify-center text-[26px]">📱</div><span class="text-[11px]">Pulsa, Tagihan</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Food')"><div class="w-[46px] h-[46px] bg-[#fff8e6] rounded-xl flex items-center justify-center text-[26px]">🍔</div><span class="text-[11px]">Shopee Food</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Gratis Ongkir')"><div class="w-[46px] h-[46px] bg-[#e6f9ed] rounded-xl flex items-center justify-center text-[26px]">🚚</div><span class="text-[11px]">Gratis Ongkir</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Voucher')"><div class="w-[46px] h-[46px] bg-[#fef0e6] rounded-xl flex items-center justify-center text-[26px]">🎟️</div><span class="text-[11px]">Voucher</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Flash Sale')"><div class="w-[46px] h-[46px] bg-[#fff0f0] rounded-xl flex items-center justify-center text-[26px]">⚡</div><span class="text-[11px]">Flash Sale</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Live')"><div class="w-[46px] h-[46px] bg-[#ffe6e6] rounded-xl flex items-center justify-center text-[26px]">🔴</div><span class="text-[11px]">Shopee Live</span></div>
+<div class="icon-box flex flex-col items-center" onclick="showToast('Shopee Video')"><div class="w-[46px] h-[46px] bg-[#e6e6ff] rounded-xl flex items-center justify-center text-[26px]">🎬</div><span class="text-[11px]">Shopee Video</span></div>
 </div>
 </div>
+
 <div class="bg-white mt-2">
-<div class="px-3 py-3 flex justify-between"><b class="text-[#ee4d2d] italic">FLASH SALE</b><span class="text-[12px]">Lihat Semua ›</span></div>
-<div id="grid" class="grid grid-cols-2 gap-px bg-gray-100">
-<div class="prod bg-white p-2" data-name="baju celana"><div class="h-[150px] bg-gray-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/t-shirt.png" class="w-20"></div><p class="text-[12px] mt-1">Baju Celana Kaos Premium - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp45.000</p></div>
-<div class="prod bg-white p-2" data-name="umami blok bumbu"><div class="h-[150px] bg-yellow-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/chicken.png" class="w-20"></div><p class="text-[12px] mt-1">VTC Blok Bumbu Umami All Rasa</p><p class="text-[#ee4d2d] font-bold">Rp12.500</p></div>
-<div class="prod bg-white p-2" data-name="sepatu"><div class="h-[150px] bg-purple-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/sneakers.png" class="w-20"></div><p class="text-[12px] mt-1">Sepatu Sneakers - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp199.000</p></div>
-<div class="prod bg-white p-2" data-name="hp"><div class="h-[150px] bg-blue-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/iphone.png" class="w-20"></div><p class="text-[12px] mt-1">HP Samsung - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp2.500.000</p></div>
-<div class="prod bg-white p-2" data-name="kulkas tv"><div class="h-[150px] bg-green-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/fridge.png" class="w-20"></div><p class="text-[12px] mt-1">Kulkas TV - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp3.200.000</p></div>
-<div class="prod bg-white p-2" data-name="windows 11 server 50jt 500jt"><div class="h-[150px] bg-blue-50 flex items-center justify-center"><img src="https://img.icons8.com/color/96/windows-11.png" class="w-20"></div><p class="text-[12px] mt-1">Windows 11 + Server - Semua Ada</p><p class="text-[#ee4d2d] font-bold">Rp1.850.000</p></div>
-</div>
-</div>
-<nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around py-1.5">
-<div class="text-center text-[#ee4d2d]"><div>🏠</div><div class="text-[10px]">Home</div></div>
-<div class="text-center opacity-60"><div>🏬</div><div class="text-[10px]">Mall</div></div>
-<div class="text-center opacity-60"><div>▶</div><div class="text-[10px]">Live</div></div>
-<div class="text-center opacity-60"><div>🛒</div><div class="text-[10px]">Keranjang</div></div>
-<div class="text-center opacity-60"><div>👤</div><div class="text-[10px]">Saya</div></div>
-</nav>
-<script>function filter(q){q=q.toLowerCase();document.querySelectorAll('.prod').forEach(p=>{p.style.display=!q||p.dataset.name.includes(q)?'':'none'})}</script>
-</body>
-</html>
+<div class="px-3 py-3 flex justify-between items-center"><div class="flex items-center gap-2"><span class="font-black italic text-[#ee4d2d] text-[16px]">FLASH SALE</span><div class="flex gap-1"><span class="bg-black text-white text-[11px] px-1 rounded">02</span>:<span class="bg-black text-white text-[11px] px-1 rounded">15</span>:<span class="bg-black text-white text-[11px] px-1 rounded">33</span></div></div><span class="text-[12px]" onclick="showToast('Lihat semua flash sale')">Lihat Semua ›</span></div>
+<div id="infoSearch" class="px-3 text-[11px] text-gray-500 pb-2"></div>
+<div id="productGrid" class="grid grid-cols-2 gap-[1px] bg-[#e5e5e5]">
+
+<div class="prod bg-white p-2.5" data-name="baju celana kaos premium semua ada" onclick="openDetail('Baju Celana Kaos Premium','Rp45.000','Terjual 2,3RB+','👕')"><div class="h-[150px] bg-[#f8f8f8] flex items-center justify-center text-[64px]">👕</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">Baju Celana Kaos Premium - Semua Ada</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp45.000</span><span class="text-[10px] text-gray-400 line-through">Rp90.000</span></div><p class="text-[10px] text-gray-500 mt-1">⭐4.9 | Terjual 2,3RB+</p></div>
+
+<div class="prod bg-white p-2.5" data-name="vtc blok bumbu umami ayam sapi jamur semua rasa" onclick="openDetail('VTC Blok Bumbu Umami All Rasa','Rp12.500','Terjual 5,2RB+','🍗')"><div class="h-[150px] bg-[#fff8e6] flex items-center justify-center text-[64px]">🍗</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">VTC Blok Bumbu Umami Ayam Sapi Jamur</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp12.500</span></div><p class="text-[10px] text-gray-500 mt-1">⭐4.9 | Terjual 5,2RB+</p></div>
+
+<div class="prod bg-white p-2.5" data-name="sepatu sneakers nike adidas semua ada" onclick="openDetail('Sepatu Sneakers Premium','Rp199.000','Terjual 1,5RB+','👟')"><div class="h-[150px] bg-[#f3f0ff] flex items-center justify-center text-[64px]">👟</div><p class="text-[12px] mt-2 line-clamp-2 leading-tight">Sepatu Sneakers Premium - Semua Ada</p><div class="flex items-end gap-1 mt-1"><span class="text-[#ee4d2d] font-bold text-[14px]">Rp199.000</span></div><p class="text-
